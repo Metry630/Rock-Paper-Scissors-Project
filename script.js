@@ -24,6 +24,8 @@ function playRound(player, computer){
             return "You lose! Rock beats scissors";
         case (player === "scissors" && computer === "scissors"):
             return "Draw! You both picked scissors";
+        case (player !== "rock" && player !== "scissors" && player !== "paper") : 
+            return "Please enter a valid answer";
     }
 }
 function game(){
@@ -40,6 +42,12 @@ function game(){
         } 
         console.log(current + ". Player Score is " + playerScore + ", computer score is " + computerScore)
     }
-    playerScore > computerScore ? console.log("You won the set " + playerScore + ":" + computerScore) : console.log("You lost the set" );
+    if(playerScore > computerScore){
+        console.log("You won the set" + playerScore + ":" + computerScore);
+    } else if (playerScore < computerScore){
+        console.log("You lost the set" + playerScore + ":" + computerScore);
+    } else{
+        console.log("You drew the set")
+    }
 }
 
