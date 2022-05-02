@@ -5,8 +5,6 @@ function computerPlay(){
     return choice[number]
 }
 function playRound(player, computer){
-    player.toLowerCase();
-    computer.toLowerCase();
     switch(true){
         case (player === "paper" && computer === "paper"):
             return "Draw! You both picked paper";
@@ -28,6 +26,20 @@ function playRound(player, computer){
             return "Draw! You both picked scissors";
     }
 }
-const player = "rock";
-const computer = computerPlay();
-console.log(playRound(player,computer))
+function game(){
+    let playerScore = 0;
+    let computerScore = 0;
+    for (let i = 0; i<5; i++){
+        let playerChoice = prompt ("Please enter your choice");
+        let playerLowered = playerChoice.toLowerCase();
+        let current = playRound(playerLowered, computerPlay());
+        if(current.includes("win")){
+            playerScore++;
+        } else if (current.includes("lose")){
+            computerScore++;
+        } 
+        console.log(current + ". Player Score is " + playerScore + ", computer score is " + computerScore)
+    }
+    playerScore > computerScore ? console.log("You won the set " + playerScore + ":" + computerScore) : console.log("You lost the set" );
+}
+
